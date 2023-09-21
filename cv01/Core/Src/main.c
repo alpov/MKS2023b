@@ -96,12 +96,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  uint32_t sos = 0b00000001010100111011101110010101;
 
-	  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin);
-	  LL_mDelay(200);
-	  LL_GPIO_ResetOutputPin(LD2_GPIO_Port, LD2_Pin);
-	  LL_mDelay(200);
-
+	  for (uint8_t i = 0; i < 32; i++) {
+		  if (sos & 1) {
+			  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin);
+		  } else {
+			  LL_GPIO_ResetOutputPin(LD2_GPIO_Port, LD2_Pin);
+		  }
+		  LL_mDelay(200);
+		  sos = sos >> 1;
+	  }
 
 
     /* USER CODE END WHILE */
