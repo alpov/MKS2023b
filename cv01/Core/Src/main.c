@@ -99,7 +99,7 @@ int main(void)
 
 	  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin);
 	  LL_mDelay(200);
-	  GPIOA->BRR = (1<<5); // LL_GPIO_ResetOutputPin(LD2_GPIO_Port, LD2_Pin);
+	  LL_GPIO_ResetOutputPin(LD2_GPIO_Port, LD2_Pin);
 	  LL_mDelay(200);
 
 
